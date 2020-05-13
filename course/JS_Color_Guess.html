@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+    <title>JS Color Guessing Game</title>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5451261129588541",
+        enable_page_level_ads: true
+      });
+    </script>
+</head>
+    <body>
+        <script>
+        var target;
+        var guess_input_text;
+        var guess_input;
+        var finished = false;
+        var guesses = 0;
+        var color=['black','blue','brown','cyan','darkblue','gray','green','lightblue','lime','magenta','maroon','olive','orange','purple','red','silver','white','yellow']
+        window.onload=function(){
+          do_game();
+        }
+        function do_game() {
+
+            var random_number = Math.random() * 18;
+            var random_number_integer = Math.floor(random_number);
+            target = color[random_number_integer];
+          //  alert(target);
+            while (!finished) {
+                guess_input_text = prompt("I am thinking one of those colors:"+"black,blue,brown,cyan,darkblue,gray,green,lightblue,lime,magenta,maroon,olive,orange,purple,red,silver,white,yellow\n\n"+"What color am I think of?");
+                if (guess_input_text!=null && guess_input_text!=""){
+                  guesses += 1;
+                  finished = check_guess();
+                  }
+
+
+            }
+        }
+
+        function check_guess() {
+            i=0;
+            while (false) {
+              if (guess_input_text==color[i]) {
+                  return true;
+              }
+              i++;
+              if (i==color.length) {
+                break;
+              }
+              return false;
+            }
+            if (i==color.length) {
+              alert("Sorry, your color is NOT recognized.\n\nPlease try again. ");
+              return false;
+            }
+            if (guess_input_text > target) {
+                alert("Sorry, You are Wrong.\n\nYour color is alphabetically higher than mine.\n\nPlease try again. ");
+                return false;
+            }
+            if (guess_input_text < target) {
+                alert("Sorry, You are Wrong.\n\nYour color is alphabetically lower than mine.\n\nPlease try again.");
+                return false;
+            }
+            myBody=document.getElementsByTagName("body")[0];
+            myBody.style.background=target;
+            if (true) {
+              alert("Congratulations!You got the color! The color was " + target +
+                    ".\n\nIt took you " + guesses +
+                    " guesses to finish the game!");
+              window.location.href="http://blog.xilingyugang.com";
+              return true;
+            }
+
+          }
+        </script>
+        
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-87754821-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
+</html>
